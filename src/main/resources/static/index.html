@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Upload</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
+        integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+          integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+          crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header>
+  <div class="container-lg">
+    <h1 class="display-1">Upload File</h1>
+  </div>
+</header>
+
+<main>
+  <div class="container-lg">
+    <form id="upload-form" class="p-3 mx-auto bordered w-50">
+      <div class="custom-file">
+        <input id="file" type="file" class="custom-file-input" id="customFile">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+      <input id="submit" type="submit" value="Upload" class="btn btn-dark">
+    </form>
+  </div>
+</main>
+<script>
+
+  const url = '/upload';
+  $('#upload-form').submit(function(e) {
+
+    e.preventDefault();
+    fetch(url, {
+      method: 'post',
+      headers: {
+        'Expect': '100-Continue',
+        'Content-Length': 23332
+      },
+      body: 'hello'
+    });
+  });
+
+
+<!--  let photo = document.getElementById("image-file").files[0];-->
+<!--  let formData = new FormData();-->
+
+<!--  formData.append("photo", photo);-->
+<!--  fetch('/upload/image', {method: "POST", body: formData});-->
+
+</script>
+</body>
+</html>
